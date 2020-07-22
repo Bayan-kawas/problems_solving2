@@ -1,28 +1,25 @@
 void main() {
-  String str="GEEKSFORGEEKS";
-  List substrings=[];
-  String substring="";
+  String str = "GEEKSFORGEEKS";
+  String substring = "";
+  String longestSubstring = "";
 
-  for(int i=0;i<str.length;i++){
-    RegExp regExp=RegExp("${str[i]}");
-    if(regExp.hasMatch(substring)==false){
-      substring=substring+str[i];
-      if(i==str.length-1){
-        substrings.add(substring);
+  for (int i = 0; i < str.length; i++) {
+    RegExp regExp = RegExp("${str[i]}");
+    if (regExp.hasMatch(substring) == false) {
+      substring = substring + str[i];
+      if (i == str.length - 1) {
+        if (substring.length > longestSubstring.length) {
+          longestSubstring = substring;
+        }
       }
-    }else{
-      substrings.add(substring);
-      substring="";
+    } else {
+      if (substring.length > longestSubstring.length) {
+        longestSubstring = substring;
+      }
+      substring = "";
     }
+  }
 
-  }
-  print(substrings);
-  String longestSubstring="";
-  for(int i=0;i < substrings.length;i++){
-    if(substrings[i].length > longestSubstring.length){
-      longestSubstring=substrings[i];
-    }
-  }
   print(longestSubstring);
   print(longestSubstring.length);
 }
